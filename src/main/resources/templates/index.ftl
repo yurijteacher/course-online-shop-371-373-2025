@@ -8,5 +8,18 @@
 
 <h1> ${hello} </h1>
 
+<h1> List Category </h1>
+
+
+<ul>
+<#if categories??>
+<#list categories as category>
+    <li>${category.id} ${category.name} ${category.description} </li>
+</#list>
+</#if>
+</ul>
+
+
+
 </body>
 </html>

@@ -6,26 +6,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 
-
 @Entity
-@Table(name = "clients")
-public class Clients {
+@Table(name = "rating")
+public class Ratings {
 
     @Id // PK
     @GeneratedValue(strategy = GenerationType.IDENTITY) // AI NN
     private Long id;
 
-    private String username;
-    private String password;
+    private double rating;
+    private String review;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Roles> rolesset;
+    @ManyToOne
+    @JoinColumn(name = "productrat_id")
+    private Products productRating;
+
+    @ManyToOne
+    @JoinColumn(name = "customerrat_id")
+    private Customers customerRating;
 
 }

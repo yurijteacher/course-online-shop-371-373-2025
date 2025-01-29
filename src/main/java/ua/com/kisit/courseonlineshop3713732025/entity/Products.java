@@ -23,7 +23,10 @@ public class Products {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @Column(length = 200)
     private String short_description;
+    @Column(length = 1024)
     private String full_description;
 
     private BigDecimal price; // **.**
