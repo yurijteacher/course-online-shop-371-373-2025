@@ -10,7 +10,6 @@
 
 <h1> List Category </h1>
 
-
 <ul>
 <#if categories??>
 <#list categories as category>

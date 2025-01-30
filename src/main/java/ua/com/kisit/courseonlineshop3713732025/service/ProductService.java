@@ -1,6 +1,7 @@
 package ua.com.kisit.courseonlineshop3713732025.service;
 
 import org.springframework.stereotype.Service;
+import ua.com.kisit.courseonlineshop3713732025.entity.Categories;
 import ua.com.kisit.courseonlineshop3713732025.entity.Products;
 import ua.com.kisit.courseonlineshop3713732025.repository.ProductRepository;
 
@@ -38,6 +39,10 @@ public class ProductService {
 
     public List<Products> getAllProducts() {
         return productRepository.findAll();
+    }
+
+    public List<Products> getProductsByCategory(Categories category) {
+        return productRepository.findAllByCategory(category);
     }
 
 }
