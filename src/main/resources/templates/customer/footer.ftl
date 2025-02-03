@@ -1,4 +1,4 @@
-<div class="col-sm-4">
+<div class="col-sm-4 pt3">
     <h3> Brands </h3>
     <ul class="list-group">
         <li class="list-group-item">An item</li>

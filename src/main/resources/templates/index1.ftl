@@ -2,7 +2,6 @@
 <@p.pages>
 
 <h3 pt-3> Categories </h3>
-<br>
 <hr>
 
 <div class="row row-cols-2 row-cols-md-3 g-4">
@@ -11,7 +10,7 @@
             <div class="col">
                 <div class="card">
                     <a href="/category/${category.id}">
-                        <img src="${category.linkImages}" class="card-img-top" alt="${category.name}">
+                        <img src="${category.linkImages}" class="card-img-top card-img-bottom" alt="${category.name}" height="150px">
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">${category.name}</h5>
@@ -22,5 +21,7 @@
         </#list>
     </#if>
 </div>
+
+    <br>
 
 </@p.pages>
