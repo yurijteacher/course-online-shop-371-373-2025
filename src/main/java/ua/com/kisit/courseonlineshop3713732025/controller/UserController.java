@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ua.com.kisit.courseonlineshop3713732025.bl.Cart;
 import ua.com.kisit.courseonlineshop3713732025.entity.Categories;
 import ua.com.kisit.courseonlineshop3713732025.entity.Clients;
 import ua.com.kisit.courseonlineshop3713732025.entity.Customers;
@@ -88,8 +89,15 @@ public class UserController {
 
         if(clientService.getClientByLoginAndPassword(username,password)){
 
-            session.setAttribute("username", username);
-            return "redirect:/";
+            session.setAttribute("user", clientService.getClientByUsername(username).getId());
+
+            Cart cart = (Cart) session.getAttribute("cart");
+
+            if(cart==null){
+                return "redirect:/";
+            }
+
+            return "redirect:/order";
 
         } else {
             return "redirect:/registration";

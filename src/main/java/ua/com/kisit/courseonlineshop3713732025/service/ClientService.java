@@ -26,4 +26,8 @@ public class ClientService {
     }
 
 
+    public Clients getClientByUsername(String username){
+        return clientsRepository.findByUsername(username);
+    }
+
 }

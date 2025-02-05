@@ -19,5 +19,9 @@ public class CustomerService {
         return customersRepository.save(customer);
     }
 
+    public Customers getCustomerById(Long id) {
+        return customersRepository.findById(id).orElse(null);
+    }
+
 
 }

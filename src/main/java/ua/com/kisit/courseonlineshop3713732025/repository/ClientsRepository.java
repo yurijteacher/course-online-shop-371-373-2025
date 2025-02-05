@@ -11,4 +11,6 @@ public interface ClientsRepository extends JpaRepository<Clients, Long> {
 
     List<Clients> findAllByUsernameAndPassword(String username, String password);
 
+    Clients findByUsername(String username);
+
 }
