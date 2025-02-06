@@ -1,6 +1,8 @@
 package ua.com.kisit.courseonlineshop3713732025.controller;
 
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,11 +21,18 @@ public class TestController {
     }
 
     @GetMapping({"/", "/categories"})
-    public String getHomePage(Model model) {
+    public String getHomePage(Model model,
+                              HttpServletRequest request
+                              ) {
 
 
         List<Categories> categoriesList = categoryService.findAll();
 
+        HttpSession session = request.getSession();
+
+        Object list1 = session.getAttribute("list1");
+
+        model.addAttribute("list1", (list1 == null) ? "false" : "true");
         model.addAttribute("hello", "Hello World!");
         model.addAttribute("categories", categoryService.findAll());
 
