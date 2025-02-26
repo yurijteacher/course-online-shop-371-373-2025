@@ -1,5 +1,6 @@
 package ua.com.kisit.courseonlineshop3713732025.service;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import ua.com.kisit.courseonlineshop3713732025.entity.Categories;
 import ua.com.kisit.courseonlineshop3713732025.repository.CategoriesRepository;
@@ -24,11 +25,14 @@ public class CategoryService {
         return categoriesRepository.save(category);
     }
 
+    @Cacheable(cacheNames = "categoryById", key = "#id")
     public Categories findById(Long id) {
         return categoriesRepository.findById(id).orElse(null);
     }
 
+    @Cacheable(cacheNames = "categories")
     public List<Categories> findAll() {
+        System.out.println("categories from db");
         return categoriesRepository.findAll();
     }
 

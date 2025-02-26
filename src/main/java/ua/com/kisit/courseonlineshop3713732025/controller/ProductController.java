@@ -11,6 +11,8 @@ import ua.com.kisit.courseonlineshop3713732025.entity.Categories;
 import ua.com.kisit.courseonlineshop3713732025.service.CategoryService;
 import ua.com.kisit.courseonlineshop3713732025.service.ProductService;
 
+import java.util.Optional;
+
 @Controller
 public class ProductController {
 
@@ -23,8 +25,13 @@ public class ProductController {
     }
 
     @GetMapping("/category/{id}")
-    public String category(@PathVariable(name = "id") Categories category,
+    public String category(@PathVariable(name = "id") Long id,
                            Model model) {
+
+        Categories category = (Categories) categoryService.findById(id);
+        if (category == null) {
+            return "redirect:/";
+        }
 
         model.addAttribute("products", productService.getProductsByCategory(category));
 
